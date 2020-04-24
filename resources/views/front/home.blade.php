@@ -7,18 +7,18 @@
             <div class="col-xl-3"></div>
             <div class="col-12 col-xl-9">
                 <div class="banner-block" style="background-image: url({{asset('images/homepage/derevo-bg.png')}})">
-                    @if($productDiscount)
+                    @if($favorites)
                     <div class="row no-gutters justify-content-center align-items-md-center">
                         <div class="col-10 col-md-5 col-xl-6">
                             <div class="banner-text text-center text-md-left">
-                                <h5 class="color-subtitle pink">{{$productDiscount->category->name}}</h5>
-                                <h2 class="title">{{$productDiscount->name}}</h2>
-                                <p>{{$productDiscount->info}}</p><a class="normal-btn pink" href="{{route('cart.add', $productDiscount->id)}}">Купить</a>
+                                <h5 class="color-subtitle pink">{{$favorites->category->name}}</h5>
+                                <h2 class="title">{{$favorites->name}}</h2>
+                                <p>{{$favorites->info}}</p><a class="normal-btn pink" href="{{route('cart.add', $favorites->id)}}">Купить</a>
                             </div>
                         </div>
                         <div class="col-12 col-md-5 col-xl-5">
                             <div class="banner-img">
-                                <div class="img-block text-center"><img class="mymove" src="{{asset('images/' . $productDiscount->image  ?? 'noimage.png')}}" alt=""></div>
+                                <div class="img-block text-center"><img class="mymove" src="{{asset('images/' . $favorites->image  ?? 'noimage.png')}}" alt=""></div>
                             </div>
                         </div>
                     </div>
@@ -87,14 +87,26 @@
                     <div class="sale-product_bottom">
                         <div class="row">
                             <div class="col-12">
-                                <div class="mini-product column">
-                                    <div class="mini-product_img"><a href="#"><img src="" alt=""></a></div>
-                                    <div class="mini-product_info"> <a href="#">Fresh Met</a>
-                                        <p>$37.00
-                                            <del>$45.00</del>
-                                        </p>
+                                @forelse($saleProducts as $saleProduct)
+                                    <div class="mini-product column">
+                                        <div class="mini-product_img">
+                                            <a href="{{route('product.details', $saleProduct->id)}}">
+                                                <img src="{{url('images', $saleProduct->image  ?? 'noimage.png')}}" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="mini-product_info">
+                                            <a href="{{route('product.details', $saleProduct->id)}}">{{$saleProduct->name}}</a>
+                                            <p>{{$saleProduct->spl_price}} ₽
+                                                <del>>{{$saleProduct->price}} ₽</del>
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
+                                @empty
+                                    <div class="mini-product column">
+                                        <div>Нет действующих акций</div>
+                                    </div>
+                                @endforelse
+
                             </div>
                         </div>
                     </div>

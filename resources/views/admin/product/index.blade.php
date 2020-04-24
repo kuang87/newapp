@@ -12,6 +12,16 @@
             {{ session('message') }}
         </div>
     @endif
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
 
     <a href="{{route('products.create')}}" type="button" class="btn btn-success">Добавить товар</a>
     <a href="{{route('categories.create')}}" type="button" class="btn btn-primary">Создать категорию</a>
@@ -27,7 +37,7 @@
             <th>Цена, руб.</th>
             <th>Кол-во</th>
             <th>Акция</th>
-            <th></th>
+            <th>Избранное</th>
             <th></th>
             <th></th>
         </tr>
@@ -43,20 +53,58 @@
                 <td>{{$product->price}}</td>
                 <td>{{$product->stock}}</td>
                 <td>
-                    @if($product->discount == 'valid')
-                        Да
-                    @endif
+                    <button type="button" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#sales-{{$product->id}}">
+                        акция
+                    </button>
+                    <div class="modal fade" id="sales-{{$product->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <form method="post" action="{{route('sale.add', $product->id)}}">
+                                @csrf
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="myModalLabel">Доступные акции</h4>
+
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="input-group">
+                                        @forelse($sales as $sale)
+                                            <div class="input-group-prepend mb-1">
+                                                <div class="input-group-text">
+                                                    <input type="radio" name="sale" value="{{$sale->id}}">
+                                                </div>
+                                                <input type="text" disabled class="form-control" value="{{$sale->name}}">
+                                            </div>
+                                        @empty
+                                            <div>Нет доступных акций</div>
+                                        @endforelse
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Закрыть</button>
+                                    <button type="submit" class="btn btn-primary btn-sm">Применить</button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    @forelse($product->currentSales() as $currentSale)
+                        <div class="text-info"><small><a href="{{route('sales.show', $currentSale->id)}}">{{$currentSale->name}}</a></small></div>
+                    @empty
+                    @endforelse
                 </td>
                 <td>
-                    @if($product->discount == 'valid')
-                        <form action="{{route('discount.cancel', $product->id)}}" method="POST">
+                    @if($product->favorites == true)
+                        <form action="{{route('favorites.remove', $product->id)}}" method="POST">
                             @csrf
-                            <button class="btn btn-secondary btn-sm">Убрать акцию</button>
+                            <button class="btn btn-warning btn-sm" title="Убрать избранное"><i class="far fa-star"></i></button>
                         </form>
                     @else
-                        <form action="{{route('discount.apply', $product->id)}}" method="POST">
+                        <form action="{{route('favorites.add', $product->id)}}" method="POST">
                             @csrf
-                            <button class="btn btn-warning btn-sm">В акцию</button>
+                            <button class="btn btn-light btn-sm" title="В избранное"><i class="far fa-star"></i></button>
                         </form>
                     @endif
 

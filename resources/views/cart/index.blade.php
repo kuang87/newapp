@@ -74,7 +74,7 @@
                                         <tr>
                                             <td class="product-iamge">
                                                 <div class="img-wrapper"><img
-                                                        src="{{url('images', $item->attributes->image)}}" alt=""></div>
+                                                        src="{{url('images', $item->attributes->image ?? 'noimage.png')}}" alt=""></div>
                                             </td>
                                             <td class="product-name">{{$item->name}}</td>
                                             <td class="product-price">{{$item->price}} ₽</td>

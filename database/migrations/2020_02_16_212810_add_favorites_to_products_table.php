@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddDiscountToProductsTable extends Migration
+class AddFavoritesToProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddDiscountToProductsTable extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->string('discount')->nullable();
+            $table->tinyInteger('favorites')->default(0);
         });
     }
 
@@ -26,7 +26,7 @@ class AddDiscountToProductsTable extends Migration
     public function down()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->dropColumn('discount');
+            $table->dropColumn('favorites');
         });
     }
 }

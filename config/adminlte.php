@@ -180,6 +180,11 @@ return [
             'icon'        => 'far fa-file',
         ],
         [
+            'text'        => 'Акции',
+            'url'         => 'admin/sales',
+            'icon'        => 'far fa-file',
+        ],
+        [
             'text'        => 'Категории',
             'url'         => 'admin/categories',
             'icon'        => 'far fa-file',

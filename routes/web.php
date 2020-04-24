@@ -23,17 +23,17 @@ Route::get('contact', function (){
 
 Auth::routes(['reset' => false]);
 
-Route::get('api/cart', 'Api\ApiCartController@index');
+
+Route::prefix('api/cart')->group(function (){
+    Route::get('/', 'Api\ApiCartController@index');
+    Route::get('remove/{product}', 'Api\ApiCartController@remove');
+});
 
 Route::prefix('cart')->group(function (){
     Route::get('/', 'CartController@index')->name('cart');
-
     Route::get('addItem/{product}', 'CartController@addItem')->name('cart.add');
-
     Route::get('remove/{product}', 'CartController@destroy')->name('cart.remove');
-
     Route::get('clear', 'CartController@clear')->name('cart.clear');
-
     Route::post('update', 'CartController@update')->name('cart.update');
 });
 
@@ -67,10 +67,14 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function (){
     Route::post('orders/{order}', 'OrderController@confirm')->name('orders.confirm');
     Route::put('orders/{order}', 'OrderController@cancel')->name('orders.cancel');
 
-    Route::post('discount/add/{product}', 'DiscountController@apply')->name('discount.apply');
-    Route::post('discount/delete/{product}', 'DiscountController@cancel')->name('discount.cancel');
+    Route::post('favorites/add/{product}', 'ProductController@addToFavorites')->name('favorites.add');
+    Route::post('favorites/delete/{product}', 'ProductController@removeFromFavorites')->name('favorites.remove');
+
+    Route::post('sales/add/{product}', 'ProductController@addToSale')->name('sale.add');
+    Route::post('sales/remove/{sale}/product/{product}', 'ProductController@removeFromSale')->name('sale.remove');
 
     Route::resource('products', 'ProductController');
     Route::resource('categories', 'CategoryController');
+    Route::resource('sales', 'SaleController');
 });
 

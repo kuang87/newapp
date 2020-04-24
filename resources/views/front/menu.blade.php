@@ -56,6 +56,7 @@
                 <div class="col-2">
                     <div class="product-function d-flex align-items-center justify-content-end">
                         <div id="cart">
+                            <app-mini-cart></app-mini-cart>
                             <a class="function-icon" href="{{route('cart')}}">
                                 <span>
                                     <i class="fas fa-shopping-bag"></i>
@@ -75,7 +76,7 @@
                 <div class="col-3">
                     <div class="mobile-menu_block d-flex align-items-center"><a class="mobile-menu--control" href="#"><i class="fas fa-bars"></i></a>
                         <div id="ogami-mobile-menu">
-                            <button class="no-round-btn" id="mobile-menu--closebtn">Закрыть</button>
+                            <button class="no-round-btn pink" id="mobile-menu--closebtn">Закрыть</button>
                             <div class="mobile-menu_items">
                                 <ul class="mb-0 d-flex flex-column">
                                     <li class="toggleable"> <a class="menu-item active" href="{{url('/')}}">Главная</a><span class="sub-menu--expander"></span>
@@ -113,9 +114,7 @@
                 </div>
                 <div class="col-3">
                     <div class="mobile-product_function d-flex align-items-center justify-content-end">
-                        <a class="function-icon" href="{{route('cart')}}">
-                            <i class="fas fa-shopping-bag"></i> {{Cart::getTotal() > 0 ? Cart::getTotal() . '₽' : ''}}
-                        </a>
+                        <app-mini-cart></app-mini-cart>
                     </div>
                 </div>
             </div>
@@ -166,5 +165,4 @@
             </div>
         </div>
     </div>
-
 </header>

@@ -3,25 +3,25 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Product;
 
 
 class ApiCartController extends Controller
 {
     public function index(){
-//        $cart = [];
-
        $products =  \Cart::getContent();
 
-//        $products = \Cart::getContent()->each(function ($item){
-//           json_encode($item);
-////           dd($cart);
-//       });
-//        dd($products);
-//        dd(json_encode($products));
-        $response = ['product' => 2];
-
-//        $cart[] = $products;
-
-        return response()->json(['cart'  => $products]);
+       return response()->json(['cart'  => $products]);
     }
+
+     public function remove(Product $product){
+         $products =  \Cart::getContent();
+         if ($products->contains('id', $product->id)){
+             \Cart::remove($product->id);
+            return response()->json(['remove' => true]);
+         }
+         else{
+             return response()->json(['error' => true], 500);
+         }
+     }
 }

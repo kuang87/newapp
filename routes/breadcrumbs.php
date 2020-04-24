@@ -1,19 +1,19 @@
 <?php
 // Home
 Breadcrumbs::for('home', function ($trail) {
-    $trail->push('Home', route('home'));
+    $trail->push('Главная', route('home'));
 });
 
 // Home > Shop
 Breadcrumbs::for('shop', function ($trail) {
     $trail->parent('home');
-    $trail->push('Shop', route('shop'));
+    $trail->push('Каталог', route('shop'));
 });
 
 // Home > Blog
 Breadcrumbs::for('cart', function ($trail) {
     $trail->parent('shop');
-    $trail->push('Cart', route('cart'));
+    $trail->push('Корзина', route('cart'));
 });
 
 //

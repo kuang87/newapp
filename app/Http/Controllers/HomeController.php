@@ -29,11 +29,13 @@ class HomeController extends Controller
     public function index()
     {
         $products = Product::all()->take(8);
-        $productDiscount = Product::where('discount', 'valid')->first();
+        $favorites = Product::where('favorites', 1)->first();
+        $saleProducts = Product::where('spl_price', '!=', '')->inRandomOrder()->take(3)->get();
 
         return view('front.home', [
             'products' => $products,
-            'productDiscount' => $productDiscount,
+            'favorites' => $favorites,
+            'saleProducts' => $saleProducts,
         ]);
     }
 
