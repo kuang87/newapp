@@ -61,7 +61,7 @@
                                                 </div>
                                                 <div class="product-info_block">
                                                     <a class="product-name" href="{{route('product.details', $product->id)}}">{{$product->name}}</a>
-                                                    <h3 class="product-price">{{$product->price}} ₽</h3>
+                                                    <h3 class="product-price">{{empty($product->spl_price) ? $product->price : $product->spl_price}} ₽</h3>
                                                     <p class="product-describe">{{$product->info}}</p>
                                                 </div>
                                                 <div class="product-select">
@@ -70,9 +70,9 @@
                                                     <a href="{{route('product.details', $product->id)}}"><button class="round-icon-btn pink"><i class="fas fa-info"></i></button></a>
                                                 </div>
                                                 <div class="product-select_list">
-                                                    <p class="delivery-status">Доставим бесплатно</p>
+                                                    <p class="delivery-status">Доставка бесплатно<br>(от 1000 ₽)</p>
                                                     <h3 class="product-price">
-                                                        {{$product->price}} ₽
+                                                        {{empty($product->spl_price) ? $product->price : $product->spl_price}} ₽
                                                     </h3>
                                                     <a href="{{route('cart.add', $product->id)}}"><button class="add-to-cart normal-btn outline">В корзину</button></a>
                                                 </div>

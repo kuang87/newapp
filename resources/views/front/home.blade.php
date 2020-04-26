@@ -138,7 +138,7 @@
                                         <div class="product pink"><a class="product-img" href="{{route('product.details', $product->id)}}"><img src="{{url('images', $product->image  ?? 'noimage.png')}}" alt=""></a>
                                             <h5 class="product-type">{{$product->category->name ?? ''}}</h5>
                                             <h3 class="product-name">{{$product->name}}</h3>
-                                            <h3 class="product-price">{{$product->price}} ₽</h3>
+                                            <h3 class="product-price">{{empty($product->spl_price) ? $product->price : $product->spl_price}} ₽</h3>
                                             <div class="product-select">
                                                 <button class="add-to-wishlist round-icon-btn pink"><i class="far fa-heart"></i></button>
                                                 <a href="{{route('cart.add', $product->id)}}"><button class="add-to-cart round-icon-btn pink"><i class="fas fa-cart-arrow-down"></i></button></a>
@@ -159,7 +159,7 @@
                                             <div class="product pink"><a class="product-img" href="{{route('product.details', $product->id)}}"><img src="{{url('images', $product->image ?? 'noimage.png')}}" alt=""></a>
                                                 <h5 class="product-type">{{$product->category->name ?? ''}}</h5>
                                                 <h3 class="product-name">{{$product->name}}</h3>
-                                                <h3 class="product-price">{{$product->price}} ₽</h3>
+                                                <h3 class="product-price">{{empty($product->spl_price) ? $product->price : $product->spl_price}} ₽</h3>
                                                 <div class="product-select">
                                                     <button class="add-to-wishlist round-icon-btn pink"><i class="far fa-heart"></i></button>
                                                     <a href="{{route('cart.add', $product->id)}}"><button class="add-to-cart round-icon-btn pink"><i class="fas fa-cart-arrow-down"></i></button></a>

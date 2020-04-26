@@ -55,7 +55,7 @@
                                     <p class="product-describe">{{$product->info}}</p>
                                     <p class="delivery-status">Бесплатная доставка</p>
                                     <div class="price-rate">
-                                        <h3 class="product-price">{{$product->price}} ₽</h3>
+                                        <h3 class="product-price">{{empty($product->spl_price) ? $product->price : $product->spl_price}} ₽</h3>
                                     </div>
                                     <div class="product-select">
                                         <a href="{{route('cart.add', $product->id)}}"><button class="add-to-cart normal-btn outline">В корзину</button></a>
