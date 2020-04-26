@@ -57,12 +57,6 @@
                     <div class="product-function d-flex align-items-center justify-content-end">
                         <div id="cart">
                             <app-mini-cart route-cart="{{route('cart')}}"></app-mini-cart>
-                            <a class="function-icon" href="{{route('cart')}}">
-                                <span>
-                                    <i class="fas fa-shopping-bag"></i>
-                                    {{Cart::getTotal() > 0 ? Cart::getTotal() . '₽' : ''}}
-                                </span>
-                            </a>
                         </div>
                     </div>
                 </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Address;
 use App\Mail\OrderCreated;
 use App\Order;
+use Darryldecode\Cart\CartCondition;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -14,6 +15,20 @@ class CheckoutController extends Controller
     public function index()
     {
         if (Auth::check()){
+            if(\Cart::getSubTotal() < 1000){
+                $condition = new CartCondition([
+                    'name' => 'Delivery',
+                    'type' => 'delivery',
+                    'target' => 'total',
+                    'value' => '+500',
+                    'order' => 1
+                ]);
+                \Cart::condition($condition);
+            }
+            else{
+                \Cart::clearCartConditions();
+            }
+
             return view('front.checkout');
         }
         else{

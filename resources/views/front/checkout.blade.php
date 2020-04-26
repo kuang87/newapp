@@ -1,6 +1,12 @@
 @extends('front.layout')
 
 @section('content')
+    <div class="ogami-breadcrumb">
+        <div class="container">
+            {{ Breadcrumbs::render('cart') }}
+        </div>
+    </div>
+
     <div class="order-step">
         <div class="container">
             <div class="row">
@@ -36,7 +42,7 @@
     </div>
     <!-- End order step-->
 
-    @if (\Session::has('cartError'))
+    @if (\Session::has('cartError') || Cart::getSubTotal() == 0)
         <div class="container">
             <div class="row">
                 <div class="col">
