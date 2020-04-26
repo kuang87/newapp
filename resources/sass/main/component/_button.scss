@@ -30,9 +30,6 @@
 	&.smooth {
 		@include button($subcolor-7,$title,14px,0,2px,$subcolor-7,15px 30px,$green,$white,$green);
 	}
-	&.black {
-		@include button($black,$white,13px,0px,2px,$black,15px 30px,$trans,$black,$black);
-	}
 }
 .slider-btn {
 	@include button($green,$white,14px,999px,2px,$green,10px,$trans,$green,$green);

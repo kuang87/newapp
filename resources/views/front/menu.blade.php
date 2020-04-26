@@ -56,7 +56,7 @@
                 <div class="col-2">
                     <div class="product-function d-flex align-items-center justify-content-end">
                         <div id="cart">
-                            <app-mini-cart></app-mini-cart>
+                            <app-mini-cart route-cart="{{route('cart')}}"></app-mini-cart>
                             <a class="function-icon" href="{{route('cart')}}">
                                 <span>
                                     <i class="fas fa-shopping-bag"></i>

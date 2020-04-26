@@ -20,7 +20,7 @@
                 </div>
                 <div class="cart-btns">
                     <div>
-                        <a href="/cart" class="btn btn-outline-secondary btn-sm">Корзина</a>
+                        <a :href="routeCart" class="btn btn-outline-secondary btn-sm">Корзина</a>
                     </div>
                     <div>
                         <a href="#" class="text-dark" @click="showCart = false">Закрыть</a>
@@ -38,7 +38,8 @@
     import {mapGetters, mapActions} from 'vuex';
 
     export default {
-        name: "AppCart",
+        name: "AppMiniCart",
+        props: ['routeCart'],
         data(){
           return {
               showCart: false,

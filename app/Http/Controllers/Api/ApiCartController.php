@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Product;
+use Illuminate\Http\Request;
 
 
 class ApiCartController extends Controller
@@ -24,4 +25,30 @@ class ApiCartController extends Controller
              return response()->json(['error' => true], 500);
          }
      }
+
+    public function clear(){
+        \Cart::clear();
+        return response()->json(['clear' => true]);
+    }
+
+    public function update(Request $request, Product $product)
+    {
+        $data = $request->validate([
+            'quantity' => 'required|integer|min:0',
+        ]);
+
+        $products =  \Cart::getContent();
+        if ($products->contains('id', $product->id)){
+            \Cart::update($product->id, array(
+                    'quantity' => array(
+                        'relative' => false,
+                        'value' => $data['quantity']),
+                )
+            );
+            return response()->json(['update' => true]);
+        }
+        else{
+            return response()->json(['error' => true], 500);
+        }
+    }
 }

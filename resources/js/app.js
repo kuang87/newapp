@@ -29,6 +29,7 @@ import './main';
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('app-mini-cart', require('./components/AppMiniCart').default);
+Vue.component('app-cart', require('./components/AppCart').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

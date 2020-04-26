@@ -27,6 +27,8 @@ Auth::routes(['reset' => false]);
 Route::prefix('api/cart')->group(function (){
     Route::get('/', 'Api\ApiCartController@index');
     Route::get('remove/{product}', 'Api\ApiCartController@remove');
+    Route::get('clear', 'Api\ApiCartController@clear');
+    Route::get('update/{product}', 'Api\ApiCartController@update');
 });
 
 Route::prefix('cart')->group(function (){

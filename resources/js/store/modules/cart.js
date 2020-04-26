@@ -14,10 +14,26 @@ export default {
         cnt(state){
             return state.products.length;
         },
+        delivery(state, getters){
+            return getters.total < 1000 ? 500 : 0;
+        },
+        _map(state){
+            let map = {};
+            state.products.forEach((product, i) => {
+                map[product.id.toString()] = i;
+            });
+            return map;
+        },
         total(state){
             return state.products.reduce((total, product) => {
                 return total = total + product.price * product.quantity;
             }, 0);
+        },
+        totalProduct(state, getters){
+          return function (id) {
+              let item = state.products[getters._map[id]];
+              return item.price * item.quantity;
+          }
         },
         inCart(state){
             return function (id) {
@@ -36,8 +52,15 @@ export default {
             let index = state.products.findIndex(product => product.id === id);
             state.products.splice(index, 1);
         },
+        clear(state){
+          state.products = [];
+        },
         error(state, error){
             state.errLoad = error;
+        },
+        changeQuantity(state, data){
+            let index = state.products.findIndex(product => product.id === data.id);
+            state.products[index].quantity = data.quantity;
         }
     },
     actions: {
@@ -64,14 +87,44 @@ export default {
                     .catch(error => {
                         console.log(error);
                     });
-
-                // return new Promise(function (resolve, reject) {
-                // if (store.getters.inCart(id)){
-                //     store.commit('remove', id);
-                //     resolve();
-                // }
             }
         },
+        clear(store){
+            server
+                .get('api/cart/clear/')
+                .then(response => {
+                    if (response.data.clear === true){
+                        store.commit('clear');
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        },
+        changeQuantity(store, data) {
+            if (isNaN(data.quantity) || data.quantity < 1){
+                data.quantity = 1;
+            }
+
+            if (store.getters.inCart(data.id)
+                && store.state.products[store.getters._map[data.id]].quantity !== data.quantity){
+                server
+                    .get('api/cart/update/' + data.id, {
+                        params: {
+                            quantity: data.quantity,
+                        }
+                    })
+                    .then(response => {
+                        if (response.data.update === true){
+                            store.commit('changeQuantity', data);
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
+            }
+        }
+
     },
     modules: {}
 }
