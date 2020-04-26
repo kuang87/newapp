@@ -26,9 +26,9 @@
                         <div class="row no-gutters justify-content-center align-items-md-center">
                             <div class="col-10 col-md-5 col-xl-6">
                                 <div class="banner-text text-center text-md-left">
-                                    <h5 class="color-subtitle pink">Butter & Eggs</h5>
-                                    <h2 class="title">Spice 100% Organnic</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do </p><a class="normal-btn pink" href="#">Shop now</a>
+                                    <h5 class="color-subtitle pink">новинки</h5>
+                                    <h2 class="title">Пицца</h2>
+                                    <p></p>
                                 </div>
                             </div>
                             <div class="col-12 col-md-5 col-xl-5">
