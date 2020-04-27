@@ -7,7 +7,7 @@
     <meta name="keywords" content="">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
-    <link rel="stylesheet" href="{{asset('css/normalize.css')}}">
+{{--    <link rel="stylesheet" href="{{asset('css/normalize.css')}}">--}}
     <link rel="shortcut icon" href="{{asset('images/shortcut_logo.png')}}">
 </head>
 
