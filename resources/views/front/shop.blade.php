@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-xl-3">
                     <div class="shop-sidebar" style="">
-                        <button class="no-round-btn" id="filter-sidebar--closebtn" style="display: none;">Закрыть меню</button>
+                        <button class="no-round-btn pink" id="filter-sidebar--closebtn" style="display: none;">Закрыть меню</button>
                         <div class="shop-sidebar_department">
                             <div class="department_top mini-tab-title underline">
                                 <h2 class="title">Меню</h2>

@@ -108,7 +108,7 @@
                 </div>
                 <div class="col-3">
                     <div class="mobile-product_function d-flex align-items-center justify-content-end">
-                        <app-mini-cart route-cart="{{route('cart')}}></app-mini-cart>
+                        <app-mini-cart route-cart="{{route('cart')}}"></app-mini-cart>
                     </div>
                 </div>
             </div>
