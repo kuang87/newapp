@@ -22,7 +22,7 @@
         "@fortawesome/fontawesome-free": "^5.13.0",
         "axios": "^0.19",
         "bootstrap": "^4.0.0",
-        "jquery": "^3.2",
+        "jquery": "^3.5",
         "jquery-zoom": "^1.7.21",
         "popper.js": "^1.12",
         "slick-carousel": "^1.8.1",
