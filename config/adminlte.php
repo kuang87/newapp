@@ -177,22 +177,27 @@ return [
         [
             'text'        => 'ПИЦЦА',
             'url'         => 'admin/products',
-            'icon'        => 'far fa-file',
+            'icon'        => 'fa fa-magnet',
         ],
         [
             'text'        => 'Акции',
             'url'         => 'admin/sales',
-            'icon'        => 'far fa-file',
+            'icon'        => 'fa fa-percent',
+        ],
+        [
+            'text'        => 'Популярные',
+            'url'         => 'admin/populars',
+            'icon'        => 'far fa-star',
         ],
         [
             'text'        => 'Категории',
             'url'         => 'admin/categories',
-            'icon'        => 'far fa-file',
+            'icon'        => 'fa fa-th-list',
         ],
         [
             'text'        => 'Заказы',
             'url'         => 'admin/orders',
-            'icon'        => 'far fa-file',
+            'icon'        => 'fa fa-clock',
         ],
         ['header' => 'account_settings'],
         [

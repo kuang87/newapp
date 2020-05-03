@@ -25,4 +25,9 @@ class Product extends Model
     {
         return $this->sales()->where('active', 1)->get();
     }
+
+    public function popular()
+    {
+        return $this->hasOne(Popular::class);
+    }
 }

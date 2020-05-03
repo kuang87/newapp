@@ -1,7 +1,7 @@
 <template>
     <div class="dropdown">
         <div class="cart-header" @click="showCart = !showCart">
-            <i class="fas fa-shopping-bag"></i> <strong>{{total}} ₽</strong>
+            <i class="fa fa-shopping-cart"></i> <strong>{{total}} ₽</strong>
         </div>
         <transition name="fade">
             <div v-if="showCart && products.length != 0" class="dropdown-content">

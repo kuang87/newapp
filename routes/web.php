@@ -11,7 +11,7 @@
 |
 */
 
-URL::forceScheme('https');
+//URL::forceScheme('https');
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('home', 'HomeController@index');
 Route::get('products', 'HomeController@shop')->name('shop');
@@ -75,6 +75,11 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function (){
 
     Route::post('sales/add/{product}', 'ProductController@addToSale')->name('sale.add');
     Route::post('sales/remove/{sale}/product/{product}', 'ProductController@removeFromSale')->name('sale.remove');
+
+    Route::get('populars', 'PopularController@index')->name('popular.index');
+    Route::get('populars/create', 'PopularController@create')->name('popular.create');
+    Route::post('populars', 'PopularController@addProduct')->name('popular.add');
+    Route::delete('populars/{product}', 'PopularController@deleteProduct')->name('popular.remove');
 
     Route::resource('products', 'ProductController');
     Route::resource('categories', 'CategoryController');

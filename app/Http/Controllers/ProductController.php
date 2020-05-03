@@ -14,7 +14,7 @@ class ProductController extends Controller
     {
         $sales = Sale::where('active', 1)->get();
         return view('admin.product.index', [
-            'products' => Product::latest()->get(),
+            'products' => Product::latest()->paginate(10),
             'sales' => $sales,
         ]);
     }

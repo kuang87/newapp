@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Popular;
 use App\Product;
 use App\WishList;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -28,14 +28,22 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $products = Product::all()->take(8);
         $favorites = Product::where('favorites', 1)->first();
         $saleProducts = Product::where('spl_price', '!=', '')->inRandomOrder()->take(3)->get();
+        $populars = Popular::all();
+        $popularCategories = DB::table('populars')
+                                ->join('products', 'populars.product_id', '=', 'products.id')
+                                ->select('category_id')
+                                ->groupBy('category_id')
+                                ->join('categories', 'products.category_id', '=', 'categories.id')
+                                ->select(['categories.id', 'categories.name'])
+                                ->get();
 
         return view('front.home', [
-            'products' => $products,
             'favorites' => $favorites,
             'saleProducts' => $saleProducts,
+            'populars' => $populars,
+            'popularCategories' => $popularCategories,
         ]);
     }
 

@@ -128,4 +128,9 @@
 
         </tbody>
     </table>
+
+    <div class="pagination">
+        {{$products->links()}}
+    </div>
+
 @stop

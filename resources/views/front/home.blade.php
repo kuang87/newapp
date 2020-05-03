@@ -122,8 +122,8 @@
                             <div class="col-12 col-md-8 text-lg-right">
                                 <ul class="nav nav-tabs tab-control text-md-right">
                                     <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#tab-0">Все</a></li>
-                                    @forelse($prodCategories as $prodCategory)
-                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab-{{$prodCategory->id}}">{{$prodCategory->name}}</a></li>
+                                    @forelse($popularCategories as $popCategory)
+                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab-{{$popCategory->id}}">{{$popCategory->name}}</a></li>
                                     @empty
                                     @endforelse
                                 </ul>
@@ -133,16 +133,16 @@
                     <div class="tab-content best-seller_bottom">
                         <div class="tab-pane fade show active" id="tab-0">
                             <div class="row no-gutters-sm">
-                                @forelse($products as $product)
+                                @forelse($populars as $popular)
                                     <div class="col-6 col-md-4">
-                                        <div class="product pink"><a class="product-img" href="{{route('product.details', $product->id)}}"><img src="{{url('images', $product->image  ?? 'noimage.png')}}" alt=""></a>
-                                            <h5 class="product-type">{{$product->category->name ?? ''}}</h5>
-                                            <h3 class="product-name">{{$product->name}}</h3>
-                                            <h3 class="product-price">{{empty($product->spl_price) ? $product->price : $product->spl_price}} ₽</h3>
+                                        <div class="product pink"><a class="product-img" href="{{route('product.details', $popular->product_id)}}"><img src="{{url('images', $popular->product->image  ?? 'noimage.png')}}" alt=""></a>
+                                            <h5 class="product-type">{{$popular->product->category->name ?? ''}}</h5>
+                                            <h3 class="product-name">{{$popular->product->name}}</h3>
+                                            <h3 class="product-price">{{empty($popular->product->spl_price) ? $popular->product->price : $popular->product->spl_price}} ₽</h3>
                                             <div class="product-select">
                                                 <button class="add-to-wishlist round-icon-btn pink"><i class="far fa-heart"></i></button>
-                                                <a href="{{route('cart.add', $product->id)}}"><button class="add-to-cart round-icon-btn pink"><i class="fas fa-cart-arrow-down"></i></button></a>
-                                                <a href="{{route('product.details', $product->id)}}"><button class="round-icon-btn pink"><i class="fas fa-info"></i></button></a>
+                                                <a href="{{route('cart.add', $popular->product_id)}}"><button class="add-to-cart round-icon-btn pink"><i class="fas fa-cart-arrow-down"></i></button></a>
+                                                <a href="{{route('product.details', $popular->product_id)}}"><button class="round-icon-btn pink"><i class="fas fa-info"></i></button></a>
                                             </div>
                                         </div>
                                     </div>
@@ -151,23 +151,24 @@
                             </div>
                         </div>
 
-                        @forelse($prodCategories as $prodCategory)
-                            <div class="tab-pane fade" id="tab-{{$prodCategory->id}}">
+                        @forelse($popularCategories as $popCategory)
+                            <div class="tab-pane fade" id="tab-{{$popCategory->id}}">
                                 <div class="row no-gutters-sm">
-                                    @forelse($prodCategory->products as $product)
-                                        <div class="col-6 col-md-4">
-                                            <div class="product pink"><a class="product-img" href="{{route('product.details', $product->id)}}"><img src="{{url('images', $product->image ?? 'noimage.png')}}" alt=""></a>
-                                                <h5 class="product-type">{{$product->category->name ?? ''}}</h5>
-                                                <h3 class="product-name">{{$product->name}}</h3>
-                                                <h3 class="product-price">{{empty($product->spl_price) ? $product->price : $product->spl_price}} ₽</h3>
-                                                <div class="product-select">
-                                                    <button class="add-to-wishlist round-icon-btn pink"><i class="far fa-heart"></i></button>
-                                                    <a href="{{route('cart.add', $product->id)}}"><button class="add-to-cart round-icon-btn pink"><i class="fas fa-cart-arrow-down"></i></button></a>
-                                                    <a href="{{route('product.details', $product->id)}}"><button class="round-icon-btn pink"><i class="fas fa-info"></i></button></a>
+                                    @forelse($populars as $popular)
+                                        @if($popular->product->category_id === $popCategory->id)
+                                            <div class="col-6 col-md-4">
+                                                <div class="product pink"><a class="product-img" href="{{route('product.details', $popular->product_id)}}"><img src="{{url('images', $popular->product->image ?? 'noimage.png')}}" alt=""></a>
+                                                    <h5 class="product-type">{{$popular->product->category->name ?? ''}}</h5>
+                                                    <h3 class="product-name">{{$popular->product->name}}</h3>
+                                                    <h3 class="product-price">{{empty($popular->product->spl_price) ? $popular->product->price : $popular->product->spl_price}} ₽</h3>
+                                                    <div class="product-select">
+                                                        <button class="add-to-wishlist round-icon-btn pink"><i class="far fa-heart"></i></button>
+                                                        <a href="{{route('cart.add', $popular->product_id)}}"><button class="add-to-cart round-icon-btn pink"><i class="fas fa-cart-arrow-down"></i></button></a>
+                                                        <a href="{{route('product.details', $popular->product_id)}}"><button class="round-icon-btn pink"><i class="fas fa-info"></i></button></a>
+                                                    </div>
                                                 </div>
                                             </div>
-
-                                        </div>
+                                        @endif
                                     @empty
                                     @endforelse
                                 </div>
