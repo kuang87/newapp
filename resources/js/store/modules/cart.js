@@ -61,6 +61,9 @@ export default {
         changeQuantity(state, data){
             let index = state.products.findIndex(product => product.id === data.id);
             state.products[index].quantity = data.quantity;
+        },
+        add(state, product){
+            state.products.push(product);
         }
     },
     actions: {
@@ -121,8 +124,29 @@ export default {
                         console.log(error);
                     });
             }
+        },
+        add(store, id) {
+            if(store.getters.inCart(id)){
+                let quantity = store.state.products[store.getters._map[id]].quantity + 1;
+                let data = {
+                    id,
+                    quantity
+                };
+                store.dispatch('changeQuantity', data);
+            }
+            else {
+                server
+                    .post('api/cart/addItem/' + id)
+                    .then(response => {
+                        if (response.data.product){
+                            store.commit('add', response.data.product);
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
+            }
         }
-
     },
     modules: {}
 }

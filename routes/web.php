@@ -30,6 +30,7 @@ Route::prefix('api/cart')->group(function (){
     Route::delete('remove/{product}', 'Api\ApiCartController@remove');
     Route::delete('clear', 'Api\ApiCartController@clear');
     Route::put('update/{product}', 'Api\ApiCartController@update');
+    Route::post('addItem/{product}', 'Api\ApiCartController@addItem');
 });
 
 Route::prefix('cart')->group(function (){

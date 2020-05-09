@@ -57,9 +57,6 @@
                     </div>
                 </div>
                 <div class="col-12 col-sm-8">
-<!--                    <button class="no-round-btn coffee cart-update" @click="clear">-->
-<!--                        Очистить корзину-->
-<!--                    </button>-->
                 </div>
                 <div class="col-12 col-sm-4 text-right">
                     <button class="no-round-btn pink cart-update" @click="clear">Очистить корзину</button>

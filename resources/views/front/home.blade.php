@@ -13,7 +13,8 @@
                             <div class="banner-text text-center text-md-left">
                                 <h5 class="color-subtitle pink">{{$favorites->category->name}}</h5>
                                 <h2 class="title">{{$favorites->name}}</h2>
-                                <p>{{$favorites->info}}</p><a class="normal-btn pink" href="{{route('cart.add', $favorites->id)}}">Купить</a>
+                                <h2>{{empty($favorites->spl_price) ? $favorites->price : $favorites->spl_price}} ₽</h2>
+                                <p>{{$favorites->info}}</p><a class="normal-btn pink" href="{{route('product.details', $favorites->id)}}">Купить</a>
                             </div>
                         </div>
                         <div class="col-12 col-md-5 col-xl-5">
@@ -106,7 +107,6 @@
                                         <div>Нет действующих акций</div>
                                     </div>
                                 @endforelse
-
                             </div>
                         </div>
                     </div>
@@ -134,18 +134,14 @@
                         <div class="tab-pane fade show active" id="tab-0">
                             <div class="row no-gutters-sm">
                                 @forelse($populars as $popular)
-                                    <div class="col-6 col-md-4">
-                                        <div class="product pink"><a class="product-img" href="{{route('product.details', $popular->product_id)}}"><img src="{{url('images', $popular->product->image  ?? 'noimage.png')}}" alt=""></a>
-                                            <h5 class="product-type">{{$popular->product->category->name ?? ''}}</h5>
-                                            <h3 class="product-name">{{$popular->product->name}}</h3>
-                                            <h3 class="product-price">{{empty($popular->product->spl_price) ? $popular->product->price : $popular->product->spl_price}} ₽</h3>
-                                            <div class="product-select">
-                                                <button class="add-to-wishlist round-icon-btn pink"><i class="far fa-heart"></i></button>
-                                                <a href="{{route('cart.add', $popular->product_id)}}"><button class="add-to-cart round-icon-btn pink"><i class="fas fa-cart-arrow-down"></i></button></a>
-                                                <a href="{{route('product.details', $popular->product_id)}}"><button class="round-icon-btn pink"><i class="fas fa-info"></i></button></a>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <app-product v-bind:product-id="{{$popular->product_id}}"
+                                                 route-product-details="{{route('product.details', $popular->product_id)}}"
+                                                 image="{{url('images', $popular->product->image  ?? 'noimage.png')}}"
+                                                 category="{{$popular->product->category->name ?? ''}}"
+                                                 name="{{$popular->product->name}}"
+                                                 price="{{empty($popular->product->spl_price) ? $popular->product->price : $popular->product->spl_price}}"
+                                                 route-add-cart="{{route('cart.add', $popular->product_id)}}"
+                                    ></app-product>
                                 @empty
                                 @endforelse
                             </div>
@@ -156,18 +152,14 @@
                                 <div class="row no-gutters-sm">
                                     @forelse($populars as $popular)
                                         @if($popular->product->category_id === $popCategory->id)
-                                            <div class="col-6 col-md-4">
-                                                <div class="product pink"><a class="product-img" href="{{route('product.details', $popular->product_id)}}"><img src="{{url('images', $popular->product->image ?? 'noimage.png')}}" alt=""></a>
-                                                    <h5 class="product-type">{{$popular->product->category->name ?? ''}}</h5>
-                                                    <h3 class="product-name">{{$popular->product->name}}</h3>
-                                                    <h3 class="product-price">{{empty($popular->product->spl_price) ? $popular->product->price : $popular->product->spl_price}} ₽</h3>
-                                                    <div class="product-select">
-                                                        <button class="add-to-wishlist round-icon-btn pink"><i class="far fa-heart"></i></button>
-                                                        <a href="{{route('cart.add', $popular->product_id)}}"><button class="add-to-cart round-icon-btn pink"><i class="fas fa-cart-arrow-down"></i></button></a>
-                                                        <a href="{{route('product.details', $popular->product_id)}}"><button class="round-icon-btn pink"><i class="fas fa-info"></i></button></a>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <app-product v-bind:product-id="{{$popular->product_id}}"
+                                                         route-product-details="{{route('product.details', $popular->product_id)}}"
+                                                         image="{{url('images', $popular->product->image  ?? 'noimage.png')}}"
+                                                         category="{{$popular->product->category->name ?? ''}}"
+                                                         name="{{$popular->product->name}}"
+                                                         price="{{empty($popular->product->spl_price) ? $popular->product->price : $popular->product->spl_price}}"
+                                                         route-add-cart="{{route('cart.add', $popular->product_id)}}"
+                                            ></app-product>
                                         @endif
                                     @empty
                                     @endforelse

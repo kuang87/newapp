@@ -51,4 +51,21 @@ class ApiCartController extends Controller
             return response()->json(['error' => true], 500);
         }
     }
+
+    public function addItem(Product $product)
+    {
+        \Cart::add(array(
+            'id' => $product->id,
+            'name' => $product->name,
+            'price' => empty($product->spl_price) ? $product->price : $product->spl_price,
+            'quantity' => 1,
+            'attributes' => [
+                'image' => $product->image,
+            ]
+        ));
+
+        $cartProduct = \Cart::get($product->id);
+
+        return response()->json(['product' => $cartProduct]);
+    }
 }

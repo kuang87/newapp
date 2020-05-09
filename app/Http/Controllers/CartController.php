@@ -31,38 +31,4 @@ class CartController extends Controller
 
         return back();
     }
-
-//    public function destroy(Product $product)
-//    {
-//        \Cart::remove($product->id);
-//
-//        return back();
-//    }
-
-//    public function clear()
-//    {
-//        \Cart::clear();
-//        return back();
-//    }
-
-//    public function update(Request $request)
-//    {
-//        $request->validate([
-//            'pro_qty' => 'between:0,999',
-//        ]);
-//
-//        $data = $request->post();
-//
-//        for ($i=0; $i < count($data['product']); $i++) {
-//            \Cart::update($data['product'][$i], array(
-//                'quantity' => array(
-//                    'relative' => false,
-//                    'value' => intval($data['pro_qty'][$i]),
-//                ),
-//            ));
-//        }
-//
-//        return back();
-//    }
-
 }
