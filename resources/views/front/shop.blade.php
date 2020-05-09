@@ -33,11 +33,6 @@
                                     <div class="col-6 col-xl-4">
                                         <h2 class="title">Пицца</h2>
                                     </div>
-                                    <div class="col-6 text-right" style="display: none;">
-                                        <div id="show-filter-sidebar" style="display: none;">
-                                            <h5> <i class="fas fa-bars"></i>Меню</h5>
-                                        </div>
-                                    </div>
                                     <div class="col-12 col-xl-8">
                                         <div class="product-option">
                                             <div class="product-filter pb-4">

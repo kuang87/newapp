@@ -25,11 +25,6 @@
                                     <div class="col-6 col-xl-4">
                                         <h2 class="title">Смена пароля</h2>
                                     </div>
-                                    <div class="col-6 text-right" style="display: none;">
-                                        <div id="show-filter-sidebar" style="display: none;">
-                                            <h5> <i class="fas fa-bars"></i>Меню</h5>
-                                        </div>
-                                    </div>
                                 </div>
                                 <!--Using column-->
                             </div>
