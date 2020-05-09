@@ -81,7 +81,7 @@ export default {
         remove(store, id){
             if (store.getters.inCart(id)){
                 server
-                    .delete('api/cart/remove/' + id)
+                    .get('api/cart/remove/' + id)
                     .then(response => {
                         if (response.data.remove === true){
                             store.commit('remove', id);
@@ -94,7 +94,7 @@ export default {
         },
         clear(store){
             server
-                .delete('api/cart/clear/')
+                .get('api/cart/clear/')
                 .then(response => {
                     if (response.data.clear === true){
                         store.commit('clear');
@@ -112,7 +112,7 @@ export default {
             if (store.getters.inCart(data.id)
                 && store.state.products[store.getters._map[data.id]].quantity !== data.quantity){
                 server
-                    .put('api/cart/update/' + data.id, {
+                    .post('api/cart/update/' + data.id, {
                             quantity: data.quantity,
                     })
                     .then(response => {

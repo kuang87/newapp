@@ -26,19 +26,23 @@ Auth::routes(['reset' => false]);
 
 
 Route::prefix('api/cart')->group(function (){
+    /*
     Route::get('/', 'Api\ApiCartController@index');
     Route::delete('remove/{product}', 'Api\ApiCartController@remove');
     Route::delete('clear', 'Api\ApiCartController@clear');
     Route::put('update/{product}', 'Api\ApiCartController@update');
+    Route::post('addItem/{product}', 'Api\ApiCartController@addItem');
+    */
+    Route::get('/', 'Api\ApiCartController@index');
+    Route::get('remove/{product}', 'Api\ApiCartController@remove');
+    Route::get('clear', 'Api\ApiCartController@clear');
+    Route::post('update/{product}', 'Api\ApiCartController@update');
     Route::post('addItem/{product}', 'Api\ApiCartController@addItem');
 });
 
 Route::prefix('cart')->group(function (){
     Route::get('/', 'CartController@index')->name('cart');
     Route::get('addItem/{product}', 'CartController@addItem')->name('cart.add');
-//    Route::get('remove/{product}', 'CartController@destroy')->name('cart.remove');
-//    Route::get('clear', 'CartController@clear')->name('cart.clear');
-//    Route::post('update', 'CartController@update')->name('cart.update');
 });
 
 Route::middleware('auth')->group(function (){
