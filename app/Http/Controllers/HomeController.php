@@ -71,6 +71,7 @@ class HomeController extends Controller
 
         return view('front.shop', [
             'products' => $products,
+            'category' => $category
         ]);
     }
 
