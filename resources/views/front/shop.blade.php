@@ -1,6 +1,20 @@
 @extends('front.layout')
 
 @section('content')
+    @if(isset($category))
+        <div class="ogami-breadcrumb">
+            <div class="container">
+                {{ Breadcrumbs::render('category', $category) }}
+            </div>
+        </div>
+    @else
+        <div class="ogami-breadcrumb">
+            <div class="container">
+                {{ Breadcrumbs::render('shop') }}
+            </div>
+        </div>
+    @endif
+
     <div class="shop-layout">
         <div class="container">
             <div class="row">

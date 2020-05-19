@@ -10,10 +10,16 @@ Breadcrumbs::for('shop', function ($trail) {
     $trail->push('Каталог', route('shop'));
 });
 
-// Home > Blog
+// Home > Shop > Cart
 Breadcrumbs::for('cart', function ($trail) {
     $trail->parent('shop');
     $trail->push('Корзина', route('cart'));
+});
+
+// Home > Shop > Category
+Breadcrumbs::for('category', function ($trail, $category) {
+    $trail->parent('shop');
+    $trail->push($category->name, route('product.category', $category->id));
 });
 
 //
