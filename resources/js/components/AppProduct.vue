@@ -1,6 +1,8 @@
 <template>
     <div class="col-6 col-md-4">
-        <div class="product pink"><a class="product-img" :href="routeProductDetails"><img :src="image" alt=""></a>
+        <div class="product pink" :class="{incart: inCart(productId)}">
+            <a class="product-img" :href="routeProductDetails"><img :src="image" alt=""></a>
+            <p v-if="inCart(productId)" :class="{'incart-info': inCart(productId)}">В корзине</p>
             <h5 class="product-type">{{category}}</h5>
             <h3 class="product-name">{{name}}</h3>
             <h3 class="product-price">{{price}} ₽</h3>
@@ -14,7 +16,7 @@
 </template>
 
 <script>
-    import {mapActions} from 'vuex'
+    import {mapGetters, mapActions} from 'vuex'
 
     export default {
         name: "AppProduct",
@@ -26,6 +28,11 @@
             name: String,
             category: String,
             price: String
+        },
+        computed: {
+            ...mapGetters({
+                inCart: 'cart/inCart'
+            })
         },
         methods: {
             ...mapActions({

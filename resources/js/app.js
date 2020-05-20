@@ -32,6 +32,7 @@ Vue.component('app-mini-cart', require('./components/AppMiniCart').default);
 Vue.component('app-cart', require('./components/AppCart').default);
 Vue.component('app-product', require('./components/AppProduct').default);
 Vue.component('app-product-extend', require('./components/AppProductExtend').default);
+Vue.component('app-search', require('./components/AppSearch').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
