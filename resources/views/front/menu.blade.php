@@ -135,18 +135,7 @@
                 <div class="col-12 col-md-8 col-lg-8 col-xl-9 order-1 order-md-2">
                     <div class="row">
                         <div class="col-12 col-xl-8">
-                            <div class="website-search">
-                                <div class="row no-gutters">
-                                    <div class="col-10 col-md-10 col-lg-10 col-xl-11">
-                                        <div class="search-input">
-                                            <input class="no-round-input no-border" type="text" placeholder="Поиск">
-                                        </div>
-                                    </div>
-                                    <div class="col-2 col-md-2 col-lg-2 col-xl-1">
-                                        <button class="no-round-btn pink"><i class="fas fa-search"></i></button>
-                                    </div>
-                                </div>
-                            </div>
+                            <app-search show-result="{{route('product.search')}}"></app-search>
                         </div>
                         <div class="col-0 col-xl-4">
                             <div class="phone-number">

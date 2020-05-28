@@ -17,6 +17,7 @@ Route::get('home', 'HomeController@index');
 Route::get('products', 'HomeController@shop')->name('shop');
 Route::get('products/{product}', 'HomeController@details')->name('product.details');
 Route::get('categories/{category}', 'HomeController@category')->name('product.category');
+Route::get('search', 'HomeController@searchProduct')->name('product.search');
 
 Route::get('contact', function (){
     return view('front.contact');

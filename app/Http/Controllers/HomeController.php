@@ -6,6 +6,7 @@ use App\Category;
 use App\Popular;
 use App\Product;
 use App\WishList;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -85,4 +86,7 @@ class HomeController extends Controller
         return view('front.product_details', ['product' => $product]);
     }
 
+    public function searchProduct(Request $request){
+        return $request->all();
+    }
 }
