@@ -2366,6 +2366,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AppSearch",
@@ -7018,7 +7021,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.search-input[data-v-5b9fdcce]{\n    position: relative;\n}\n.search-row[data-v-5b9fdcce]{\n    position: absolute;\n    width: 100%;\n    display: flex;\n    flex-wrap: wrap;\n    background: white;\n    z-index: 9999;\n    cursor: pointer;\n}\n.search-item[data-v-5b9fdcce]:hover{\n    background: #e8e7e8;\n}\n.search-item:hover .info-product a[data-v-5b9fdcce]{\n    color: #db7a46;\n}\n.search-item[data-v-5b9fdcce]{\n    display: flex;\n    align-items: center;\n    outline: 1px solid #ebebeb;\n    width: 100%;\n    min-height: 50px;\n}\n.img-product[data-v-5b9fdcce]{\n    flex-basis: 45px;\n    flex-shrink: 0;\n    margin: 1px;\n}\n.img-product img[data-v-5b9fdcce]{\n    max-width: 100%;\n}\n.info-product[data-v-5b9fdcce]{\n    flex-grow: 1;\n    margin-left: 10px;\n}\n.info-product a[data-v-5b9fdcce]{\n    text-decoration: none;\n    color: black;\n}\n.show-search[data-v-5b9fdcce]{\n    margin: auto;\n}\n.show-search a[data-v-5b9fdcce]{\n    text-decoration: none;\n    color: black;\n}\n.show-search[data-v-5b9fdcce]:hover{\n    font-weight: bold;\n}\n", ""]);
+exports.push([module.i, "\n.search-input[data-v-5b9fdcce]{\n    position: relative;\n}\n.search-row[data-v-5b9fdcce]{\n    position: absolute;\n    width: 100%;\n    display: flex;\n    flex-wrap: wrap;\n    background: white;\n    z-index: 9999;\n    cursor: pointer;\n}\n.search-item[data-v-5b9fdcce]:hover{\n    background: #e8e7e8;\n}\n.search-item:hover .info-product a[data-v-5b9fdcce]{\n    color: #db7a46;\n}\n.search-item[data-v-5b9fdcce]{\n    display: flex;\n    align-items: center;\n    outline: 1px solid #ebebeb;\n    width: 100%;\n    min-height: 50px;\n}\n.img-product[data-v-5b9fdcce]{\n    flex-basis: 45px;\n    flex-shrink: 0;\n    margin: 1px;\n}\n.img-product img[data-v-5b9fdcce]{\n    max-width: 100%;\n}\n.info-product[data-v-5b9fdcce]{\n    flex-grow: 1;\n    margin-left: 10px;\n}\n.info-product a[data-v-5b9fdcce]{\n    text-decoration: none;\n    color: black;\n}\n.show-search[data-v-5b9fdcce]{\n    margin: auto;\n}\n.show-search a[data-v-5b9fdcce]{\n    text-decoration: none;\n    color: black;\n}\n.show-search[data-v-5b9fdcce]:hover{\n    font-weight: bold;\n}\n.slide-enter-active[data-v-5b9fdcce] {\n    animation: slideIn-data-v-5b9fdcce 0.5s;\n}\n.slide-leave-active[data-v-5b9fdcce] {\n    animation: slideOut-data-v-5b9fdcce 0.5s;\n}\n@keyframes slideIn-data-v-5b9fdcce {\nfrom{opacity: 0; transform: translateY(-0.5em);}\nto{opacity: 1; transform: translateY(0%);}\n}\n@keyframes slideOut-data-v-5b9fdcce {\nfrom{opacity: 1;}\nto{opacity: 0;}\n}\n\n", ""]);
 
 // exports
 
@@ -42468,57 +42471,68 @@ var render = function() {
             _vm._v(" "),
             _vm.focusInput === true
               ? [
-                  _vm.products.length !== 0
-                    ? _c(
-                        "div",
-                        { staticClass: "search-row" },
-                        [
-                          _vm._l(_vm.products, function(product, i) {
-                            return _c("div", { staticClass: "search-item" }, [
-                              _c("div", { staticClass: "img-product" }, [
-                                _c("img", {
-                                  attrs: {
-                                    src:
-                                      "/images/" +
-                                      (product.image !== null
-                                        ? product.image
-                                        : "noimage.png")
-                                  }
-                                })
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "info-product" }, [
-                                _c("a", {
-                                  attrs: { href: "/products/" + product.id },
-                                  domProps: {
-                                    innerHTML: _vm._s(
-                                      _vm.highlightText(product.name)
-                                    )
-                                  }
-                                })
+                  _c("transition", { attrs: { name: "slide" } }, [
+                    _vm.products.length !== 0
+                      ? _c(
+                          "div",
+                          { staticClass: "search-row" },
+                          [
+                            _vm._l(_vm.products, function(product, i) {
+                              return _c("div", { staticClass: "search-item" }, [
+                                _c("div", { staticClass: "img-product" }, [
+                                  _c("img", {
+                                    attrs: {
+                                      src:
+                                        "/images/" +
+                                        (product.image !== null
+                                          ? product.image
+                                          : "noimage.png")
+                                    }
+                                  })
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "info-product" }, [
+                                  _c("a", {
+                                    attrs: { href: "/products/" + product.id },
+                                    domProps: {
+                                      innerHTML: _vm._s(
+                                        _vm.highlightText(product.name)
+                                      )
+                                    }
+                                  })
+                                ])
+                              ])
+                            }),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "search-item" }, [
+                              _c("div", { staticClass: "show-search" }, [
+                                _c(
+                                  "a",
+                                  {
+                                    attrs: {
+                                      href:
+                                        _vm.showResult + "/?text=" + _vm.text
+                                    }
+                                  },
+                                  [_vm._v("Показать все результаты")]
+                                )
                               ])
                             ])
-                          }),
-                          _vm._v(" "),
+                          ],
+                          2
+                        )
+                      : _vm.products.length === 0 && _vm.resultEmpty
+                      ? _c("div", { staticClass: "search-row" }, [
                           _c("div", { staticClass: "search-item" }, [
                             _c("div", { staticClass: "show-search" }, [
-                              _c(
-                                "a",
-                                {
-                                  attrs: {
-                                    href: _vm.showResult + "/?text=" + _vm.text
-                                  }
-                                },
-                                [_vm._v("Показать все результаты")]
+                              _vm._v(
+                                "\n                                    Ничего не найдено\n                                "
                               )
                             ])
                           ])
-                        ],
-                        2
-                      )
-                    : _vm.products.length === 0 && _vm.resultEmpty
-                    ? _c("div", { staticClass: "search-row" }, [_vm._m(0)])
-                    : _vm._e()
+                        ])
+                      : _vm._e()
+                  ])
                 ]
               : _vm._e()
           ],
@@ -42545,20 +42559,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "search-item" }, [
-      _c("div", { staticClass: "show-search" }, [
-        _vm._v(
-          "\n                                Ничего не найдено\n                            "
-        )
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

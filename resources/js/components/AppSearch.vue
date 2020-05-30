@@ -9,28 +9,31 @@
                            @blur="focusInput = false"
                     >
                     <template v-if="focusInput === true">
-                        <div v-if="products.length !== 0" class="search-row">
-                            <div v-for="(product, i) in products" class="search-item">
-                                <div class="img-product">
-                                    <img :src="'/images/' + (product.image !== null ? product.image : 'noimage.png')">
+                        <transition name="slide">
+                            <div v-if="products.length !== 0" class="search-row">
+                                <div v-for="(product, i) in products" class="search-item">
+                                    <div class="img-product">
+                                        <img
+                                            :src="'/images/' + (product.image !== null ? product.image : 'noimage.png')">
+                                    </div>
+                                    <div class="info-product">
+                                        <a :href="'/products/' + product.id" v-html="highlightText(product.name)"></a>
+                                    </div>
                                 </div>
-                                <div class="info-product">
-                                    <a :href="'/products/' + product.id" v-html="highlightText(product.name)"></a>
-                                </div>
-                            </div>
-                            <div class="search-item">
-                                <div class="show-search">
-                                    <a :href="showResult + '/?text=' + text">Показать все результаты</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div v-else-if="(products.length === 0) && resultEmpty" class="search-row">
-                            <div class="search-item">
-                                <div class="show-search">
-                                    Ничего не найдено
+                                <div class="search-item">
+                                    <div class="show-search">
+                                        <a :href="showResult + '/?text=' + text">Показать все результаты</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                            <div v-else-if="(products.length === 0) && resultEmpty" class="search-row">
+                                <div class="search-item">
+                                    <div class="show-search">
+                                        Ничего не найдено
+                                    </div>
+                                </div>
+                            </div>
+                        </transition>
                     </template>
                 </div>
             </div>
@@ -150,4 +153,19 @@
     .show-search:hover{
         font-weight: bold;
     }
+    .slide-enter-active {
+        animation: slideIn 0.5s;
+    }
+    .slide-leave-active {
+        animation: slideOut 0.5s;
+    }
+    @keyframes slideIn {
+        from{opacity: 0; transform: translateY(-0.5em);}
+        to{opacity: 1; transform: translateY(0%);}
+    }
+    @keyframes slideOut {
+        from{opacity: 1;}
+        to{opacity: 0;}
+    }
+
 </style>
