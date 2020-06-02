@@ -6524,6 +6524,543 @@ footer.coffee .newletter .newletter_input button:focus {
 }
 
 /************************************
+	Blog layout
+*************************************/
+
+.blog-layout {
+  margin-bottom: 60px;
+}
+
+.blog-layout #show-filter-sidebar {
+  margin-bottom: 30px;
+}
+
+.blog-layout .blog-pagination ul {
+  margin-bottom: 0;
+}
+
+.blog-layout .blog-pagination ul li {
+  display: inline-block;
+}
+
+.blog-layout .blog-pagination ul li .no-round-btn {
+  height: 40px;
+  width: 40px;
+  padding: 0;
+}
+
+.blog-layout .blog-pagination ul li .no-round-btn.active {
+  background-color: #88c74a;
+  color: #fff;
+  border: 1px solid #88c74a;
+}
+
+.blog-layout .blog-loadmore {
+  text-align: center;
+}
+
+.blog-layout .blog-loadmore button {
+  background-color: #fff;
+  color: #252525;
+  font-size: 13px;
+  border-radius: 999px;
+  -webkit-border-radius: 999px;
+  -moz-border-radius: 999px;
+  -ms-border-radius: 999px;
+  -o-border-radius: 999px;
+  padding: 15px 30px;
+  text-transform: uppercase;
+  font-family: "Cera Pro Bold";
+  border: 2px solid #88c74a;
+  transition: 0.3s ease;
+  display: inline-block;
+}
+
+.blog-layout .blog-loadmore button:hover {
+  background-color: #88c74a;
+  color: #fff;
+  border: 2px solid #88c74a;
+  text-decoration: none;
+}
+
+.blog-layout .blog-loadmore button:focus {
+  outline: 0;
+  box-shadow: 0;
+}
+
+.blog-layout .blog-loadmore button i {
+  margin-right: 10px;
+}
+
+.blog-layout .blog-img a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.blog-layout .blog-img a img {
+  width: 100%;
+}
+
+.blog-layout .blog-tag {
+  font-family: "Cera Pro Bold";
+  font-size: 12px;
+  color: #fff;
+  line-height: 1;
+  display: block;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 8px 20px;
+  display: inline-block;
+  background-color: #fd5f5c;
+  border-radius: 2px;
+  margin-bottom: 10px;
+}
+
+.blog-layout .blog-title {
+  font-family: "Cera Pro Bold";
+  font-size: 28px;
+  color: #252525;
+  line-height: 38px;
+  display: inline-block;
+  transition: 0.3s ease;
+  margin-bottom: 10px;
+}
+
+.blog-layout .blog-title:hover {
+  color: #252525;
+  text-decoration: none;
+}
+
+.blog-layout .blog-credit {
+  margin-bottom: 15px;
+}
+
+.blog-layout .blog-credit .credit {
+  font-family: "Cera Pro Regular";
+  font-size: 14px;
+  color: #b2b2b2;
+  line-height: 1;
+  display: block;
+  display: inline-block;
+}
+
+.blog-layout .blog-credit .credit.date:after {
+  content: "|";
+  padding: 0 15px;
+}
+
+.blog-layout .blog-describe {
+  font-family: "Cera Pro Regular";
+  font-size: 16px;
+  color: #636363;
+  line-height: 24px;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.blog-layout .blog-readmore {
+  font-family: "Cera Pro Bold";
+  font-size: 13px;
+  color: #252525;
+  line-height: 1;
+  display: inline-block;
+  transition: 0.3s ease;
+  text-transform: uppercase;
+}
+
+.blog-layout .blog-readmore:hover {
+  color: #88c74a;
+  text-decoration: none;
+}
+
+.blog-layout .blog-readmore span {
+  color: #88c74a;
+}
+
+/************************************
+	Blog list
+*************************************/
+
+.blog-list .blog-block {
+  margin-bottom: 35px;
+  padding-bottom: 35px;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.blog-list .blog-block:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+  margin-bottom: 30px;
+}
+
+.blog-list .blog-block .blog-text {
+  flex-grow: 1;
+}
+
+/************************************
+	Blog grid
+*************************************/
+
+.blog-grid .blog-block,
+.blog-grid_1col .blog-block {
+  margin-bottom: 40px;
+}
+
+.blog-grid .blog-block .blog-img,
+.blog-grid_1col .blog-block .blog-img {
+  margin-bottom: 20px;
+}
+
+/************************************
+	Blog masonry
+*************************************/
+
+.blog-masonry {
+  column-count: 3;
+  column-gap: 30px;
+}
+
+.blog-masonry .blog-block {
+  display: inline-block;
+  margin-bottom: 40px;
+}
+
+.blog-masonry .blog-block .blog-img {
+  margin-bottom: 20px;
+}
+
+.blog-masonry .blog-block:nth-child(2n) {
+  margin-bottom: 0;
+}
+
+/************************************
+	Blog 1 column
+*************************************/
+
+.blog-grid_1col .blog-block {
+  margin-bottom: 35px;
+  padding-bottom: 35px;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.blog-grid_1col .blog-block .blog-title {
+  font-size: 36px;
+  line-height: 46px;
+  margin-bottom: 20px;
+}
+
+.blog-grid_1col .blog-block .blog-img {
+  position: relative;
+}
+
+.blog-grid_1col .blog-block .blog-img .blog-tag {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.blog-grid_1col .blog-pagination {
+  text-align: center;
+}
+
+/************************************
+	Blog detail
+*************************************/
+
+.blog-detail .blog-detail_block {
+  margin-bottom: 30px;
+}
+
+.blog-detail .blog-detail_block .blog-title {
+  font-size: 36px;
+  line-height: 48px;
+  margin-bottom: 10px;
+}
+
+.blog-detail .blog-detail_block .blog-img {
+  margin-bottom: 20px;
+}
+
+.blog-detail .blog-detail_block .blog-img img {
+  width: 100%;
+}
+
+.blog-detail .blog-detail_block .blog-quote {
+  margin-bottom: 30px;
+  border-left: 3px solid #88c74a;
+  padding-left: 20px;
+}
+
+.blog-detail .blog-detail_block .blog-quote q {
+  font-family: "Cera Pro Regular";
+  font-size: 18px;
+  color: #252525;
+  line-height: 26px;
+  display: block;
+  font-family: "Cera Pro Regular Italic";
+  margin-bottom: 15px;
+}
+
+.blog-detail .blog-detail_block .blog-quote p {
+  font-family: "Cera Pro Regular";
+  font-size: 14px;
+  color: #252525;
+  line-height: 1;
+  display: block;
+  text-align: right;
+}
+
+.blog-detail .blog-detail_block .blog-describe {
+  line-height: 30px;
+}
+
+.blog-detail .blog-detail_block .blog-subtitle {
+  font-family: "Cera Pro Medium";
+  font-size: 24px;
+  color: #252525;
+  line-height: 28px;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.blog-detail .blog-detail_footer {
+  padding-bottom: 30px;
+  border-bottom: 1px solid #ebebeb;
+  margin-bottom: 15px;
+}
+
+.blog-detail .blog-detail_footer .blog-sidebar_tags a {
+  margin-right: 10px;
+}
+
+.blog-detail .blog-detail_footer .blog-detail_share h5 {
+  font-family: "Cera Pro Regular";
+  font-size: 16px;
+  color: #252525;
+  line-height: 1;
+  display: block;
+  display: inline-block;
+  margin-right: 15px;
+}
+
+.blog-detail .blog-detail_footer .blog-detail_share span {
+  display: inline-block;
+}
+
+.blog-detail .blog-detail_footer .blog-detail_share span a {
+  font-family: "Cera Pro Regular";
+  font-size: 13px;
+  color: #636363;
+  line-height: 1;
+  display: inline-block;
+  transition: 0.3s ease;
+  margin-right: 30px;
+}
+
+.blog-detail .blog-detail_footer .blog-detail_share span a:hover {
+  color: #88c74a;
+  text-decoration: none;
+}
+
+.blog-detail .blog-detail_footer .blog-detail_share span a:last-child {
+  margin-right: 0;
+}
+
+.blog-detail .blog-detail_comment .comment-title {
+  font-family: "Cera Pro Regular";
+  font-size: 24px;
+  color: #636363;
+  line-height: 1;
+  display: block;
+  margin-bottom: 40px;
+}
+
+.blog-detail .blog-detail_comment .customer-reviews_block {
+  padding-bottom: 50px;
+  border-bottom: 1px solid #ebebeb;
+  margin-bottom: 50px;
+}
+
+.blog-detail .blog-detail_comment .customer-reviews_block .customer-review {
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.blog-detail .blog-detail_comment .customer-reviews_block .customer-review:last-child {
+  margin-bottom: 0;
+}
+
+.blog-detail .blog-detail_comment .customer-reviews_block .customer-review:last-child .customer-comment button {
+  margin-bottom: 0;
+}
+
+.blog-detail .blog-detail_comment .customer-reviews_block .customer-review .customer-review_left .customer-review_img {
+  width: 80px;
+  height: 80px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: 15px;
+  background-color: #eaeff4;
+}
+
+.blog-detail .blog-detail_comment .customer-reviews_block .customer-review .customer-review_left .customer-review_img img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.blog-detail .blog-detail_comment .customer-reviews_block .customer-review .customer-comment {
+  flex-grow: 1;
+}
+
+.blog-detail .blog-detail_comment .customer-reviews_block .customer-review .customer-comment .comment-date {
+  font-family: "Cera Pro Regular";
+  font-size: 14px;
+  color: #b2b2b2;
+  line-height: 1;
+  display: block;
+  letter-spacing: 2.4px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.blog-detail .blog-detail_comment .customer-reviews_block .customer-review .customer-comment .customer-name {
+  font-family: "Cera Pro Bold";
+  font-size: 18px;
+  color: #252525;
+  line-height: 1;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.blog-detail .blog-detail_comment .customer-reviews_block .customer-review .customer-comment .customer-commented {
+  font-family: "Cera Pro Regular";
+  font-size: 16px;
+  color: #636363;
+  line-height: 24px;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.blog-detail .blog-detail_comment .customer-reviews_block .customer-review .customer-comment button {
+  background-color: #fff;
+  color: #252525;
+  font-size: 13px;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  padding: 8px 20px;
+  text-transform: uppercase;
+  font-family: "Cera Pro Bold";
+  border: 1px solid #b2b2b2;
+  transition: 0.3s ease;
+  display: inline-block;
+  margin-bottom: 40px;
+}
+
+.blog-detail .blog-detail_comment .customer-reviews_block .customer-review .customer-comment button:hover {
+  background-color: #88c74a;
+  color: #fff;
+  border: 1px solid #88c74a;
+  text-decoration: none;
+}
+
+.blog-detail .blog-detail_comment .customer-reviews_block .customer-review .customer-comment button:focus {
+  outline: 0;
+  box-shadow: 0;
+}
+
+.blog-detail .blog-detail_comment .customer-reviews_block .customer-review .customer-comment .replied-comment button {
+  margin-bottom: 0;
+}
+
+.blog-detail .blog-detail_comment .leave-reviews_block form input {
+  margin-bottom: 30px;
+}
+
+.blog-detail .blog-detail_comment .leave-reviews_block form textarea {
+  margin-bottom: 50px;
+}
+
+@media (max-width: 576px) {
+  .blog-list .blog-block .blog-text .blog-title {
+    font-size: 18px;
+    line-height: 26px;
+  }
+
+  .blog-list .blog-block .blog-text .blog-credit {
+    display: none;
+  }
+
+  .blog-list .blog-block .blog-text .blog-describe {
+    display: none;
+  }
+
+  .blog-list .blog-block .blog-text .blog-readmore {
+    display: none;
+  }
+
+  .blog-masonry {
+    column-count: 1;
+  }
+
+  .blog-masonry .blog-block:nth-child(2n) {
+    margin-bottom: 40px;
+  }
+
+  .blog-detail .blog-detail_footer .blog-sidebar_tags {
+    margin-bottom: 15px;
+  }
+
+  .blog-detail .blog-detail_comment .customer-reviews_block .customer-review .customer-comment .replied-comment {
+    border-left: 3px solid #88c74a;
+    padding-left: 15px;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .blog-list .blog-block .blog-text .blog-title {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .blog-list .blog-block .blog-text .blog-credit {
+    display: none;
+  }
+
+  .blog-list .blog-block .blog-text .blog-describe {
+    display: none;
+  }
+
+  .blog-list .blog-block .blog-text .blog-readmore {
+    display: none;
+  }
+
+  .blog-masonry {
+    column-count: 1;
+  }
+
+  .blog-masonry .blog-block:nth-child(2n) {
+    margin-bottom: 40px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .blog-masonry {
+    column-count: 2;
+  }
+
+  .blog-masonry .blog-block:nth-child(2n) {
+    margin-bottom: 40px;
+  }
+}
+
+/************************************
 	Account
 *************************************/
 

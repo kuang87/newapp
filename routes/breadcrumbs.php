@@ -10,6 +10,12 @@ Breadcrumbs::for('shop', function ($trail) {
     $trail->push('Каталог', route('shop'));
 });
 
+// Home > Salesl
+Breadcrumbs::for('sales', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Акции', route('product.sales'));
+});
+
 // Home > Shop > Cart
 Breadcrumbs::for('cart', function ($trail) {
     $trail->parent('shop');

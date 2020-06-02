@@ -7,7 +7,6 @@
     <meta name="keywords" content="">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
-{{--    <link rel="stylesheet" href="{{asset('css/normalize.css')}}">--}}
     <link rel="shortcut icon" href="{{asset('images/shortcut_logo.png')}}">
 </head>
 
@@ -49,7 +48,7 @@
                         </div>
                         <div class="col-12 col-sm-4 text-sm-center text-md-left">
                             <div class="footer-quicklink">
-                                <h5>Дополнительно</h5><a href="{{route('home')}}">Акции</a>
+                                <h5>Дополнительно</h5><a href="{{route('product.sales')}}">Акции</a>
                             </div>
                         </div>
                     </div>
@@ -85,7 +84,6 @@
 </div>
 
 <script src="{{ asset('js/app.js') }}" defer></script>
-{{--<script src="{{asset('js/main.js')}}"></script>--}}
 
 @stack('scripts')
 </body>

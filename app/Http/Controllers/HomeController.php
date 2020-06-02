@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Popular;
 use App\Product;
+use App\Sale;
 use App\WishList;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -88,5 +89,18 @@ class HomeController extends Controller
 
     public function searchProduct(Request $request){
         return $request->all();
+    }
+
+    public function showSales()
+    {
+        $sales = Sale::where('active', 1)->latest()->get();
+        return view('front.sales', [
+            'sales' => $sales,
+        ]);
+    }
+
+    public function sale (Sale $sale)
+    {
+        return redirect()->route('home');
     }
 }
