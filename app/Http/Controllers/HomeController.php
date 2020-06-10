@@ -101,6 +101,8 @@ class HomeController extends Controller
 
     public function sale (Sale $sale)
     {
-        return redirect()->route('home');
+        return view('front.sale', [
+            'sale' => $sale,
+        ]);
     }
 }
