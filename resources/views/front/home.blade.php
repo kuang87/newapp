@@ -34,7 +34,7 @@
                             </div>
                             <div class="col-12 col-md-5 col-xl-5">
                                 <div class="banner-img">
-                                    <div class="img-block text-center"><img class="mymove" src="images/noimage.png" alt=""></div>
+                                    <div class="img-block text-center"><img class="mymove" src="{{url('images/noimage.png')}}" alt=""></div>
                                 </div>
                             </div>
                         </div>
@@ -108,6 +108,11 @@
                                     </div>
                                 @endforelse
                             </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col mt-2 text-right">
+                            <a class="text-dark font-weight-bold text-decoration-none" href="{{route('product.sales')}}">Все акции</a>
                         </div>
                     </div>
                 </div>
