@@ -17,4 +17,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+//Deploy GitHub
+Route::post('deploy', 'DeployController@deploy');
+
 Route::get('search', 'Api\SearchProductController@search');
