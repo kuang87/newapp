@@ -17,9 +17,9 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="blog-detail_block">
-                                    <h1 class="blog-title">{{$sale->name ?? 'Не найдено'}}</h1>
+                                    <h1 class="blog-subtitle">{{$sale->name ?? 'Не найдено'}}</h1>
                                     <p class="blog-describe">{{$sale->description ?? 'Не найдено'}}</p>
-                                    <h2 class="blog-subtitle">Товары, участвующие в акции:</h2>
+                                    <p class="blog-describe"><strong>Товары, участвующие в акции:</strong></p>
                                     <div class="row no-gutters-sm">
                                         @forelse($sale->products as $product)
                                             <app-product v-bind:product-id="{{$product->id}}"

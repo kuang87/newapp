@@ -88,7 +88,19 @@ class HomeController extends Controller
     }
 
     public function searchProduct(Request $request){
-        return $request->all();
+        $data = $request->validate([
+            'text' => 'required|min:2',
+        ]);
+        $text = $data['text'];
+        $products = Product::where('name', 'LIKE', "%$text%")->limit(100)->get();
+        $categories = $products->pluck('category_id')->unique()->sort()->transform(function ($item, $key){
+            return Category::find($item);
+        });
+
+        return view('front.search-result', [
+            'products' => $products,
+            'categories' => $categories,
+        ]);
     }
 
     public function showSales()

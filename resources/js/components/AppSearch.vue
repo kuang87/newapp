@@ -86,7 +86,6 @@
             highlightText(str, text = this.text) {
                 let regex = new RegExp(text, "i");
                 let pos = str.search(regex);
-                console.log(pos);
                 if (pos >= 0 && text.length > 1) {
                     let textInStr = str.substr(pos, text.length);
                     let highligt = `<span style="font-weight: bold; color: #1078ff">${textInStr}</span>`;

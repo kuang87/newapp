@@ -28,6 +28,12 @@ Breadcrumbs::for('category', function ($trail, $category) {
     $trail->push($category->name, route('product.category', $category->id));
 });
 
+//Home > Search result
+Breadcrumbs::for('search', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Результаты поиска');
+});
+
 //
 //// Home > Blog > [Category]
 //Breadcrumbs::for('category', function ($trail, $category) {

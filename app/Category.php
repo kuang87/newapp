@@ -10,4 +10,12 @@ class Category extends Model
     {
         return $this->hasMany(Product::class);
     }
+
+    public function filterProducts($products){
+        $filtered = $products->filter(function ($item, $key){
+            return $item->category_id === $this->id;
+        });
+
+        return $filtered;
+    }
 }

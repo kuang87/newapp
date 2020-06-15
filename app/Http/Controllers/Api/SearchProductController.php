@@ -13,7 +13,7 @@ class SearchProductController extends Controller
     public function search(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'text' => 'required'
+            'text' => 'required|min:2'
         ]);
 
         if ($validator->fails()){
