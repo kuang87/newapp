@@ -9,6 +9,7 @@ use App\Sale;
 use App\WishList;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
@@ -32,14 +33,20 @@ class HomeController extends Controller
     {
         $favorites = Product::where('favorites', 1)->first();
         $saleProducts = Product::where('spl_price', '!=', '')->inRandomOrder()->take(3)->get();
-        $populars = Popular::all();
-        $popularCategories = DB::table('populars')
-                                ->join('products', 'populars.product_id', '=', 'products.id')
-                                ->select('category_id')
-                                ->groupBy('category_id')
-                                ->join('categories', 'products.category_id', '=', 'categories.id')
-                                ->select(['categories.id', 'categories.name'])
-                                ->get();
+
+        $populars = Cache::remember('populars', now()->addDays(1), function (){
+            return Popular::all();
+        });
+        $popularCategories = Cache::remember('popular_categories', now()->addDays(1), function (){
+            return DB::table('populars')
+                    ->join('products', 'populars.product_id', '=', 'products.id')
+                    ->select('category_id')
+                    ->groupBy('category_id')
+                    ->join('categories', 'products.category_id', '=', 'categories.id')
+                    ->select(['categories.id', 'categories.name'])
+                    ->get();
+
+        });
 
         return view('front.home', [
             'favorites' => $favorites,
